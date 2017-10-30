@@ -1,0 +1,12 @@
+#config file
+config/APIkey.ini.dgtest
+# compiled binaries
+__pycache__
+pytrexx.pyc
+bitrexx.pyc
+# not a pip yet
+requirements.txt
+test.py
+setup.py
+# unit tests for later
+unitTests
