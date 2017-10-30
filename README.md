@@ -34,13 +34,14 @@ Options:
   --help     Show this message and exit.
 
 Commands:
-  accountbalance  Check your Bittrex account balance
-  buy             Set buy limit order <currency pair>...
-  cancel          Cancel an existing buy/sell limit order
-  convert         <currency> type and <amount> to convert.
-  currencies      List all supported currencies on Bittrex
-  deposits        Check your Bittrex deposit history
-  order           Check a Bittrex order
-  orders          Check your Bittrex order history
-  sell            Set buy limit order <currency pair>...
-  withdrawals     Check your Bittrex withdrawal history
+
+accountbalance  Check your Bittrex account balance
+buy             Set buy limit order <currency pair>...
+cancel          Cancel an existing buy/sell limit order
+convert         <currency> type and <amount> to convert.
+currencies      List all supported currencies on Bittrex
+deposits        Check your Bittrex deposit history
+order           Check a Bittrex order
+orders          Check your Bittrex order history
+sell            Set buy limit order <currency pair>...
+withdrawals     Check your Bittrex withdrawal history
