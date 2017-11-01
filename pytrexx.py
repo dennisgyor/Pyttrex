@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 __author__ = 'Dennis.Gyor'
 
 from bittrex import Bittrex
@@ -6,20 +6,24 @@ import datetime
 import click
 from forex_python.bitcoin import BtcConverter
 from tabulate import tabulate
-import json
 import logging
 from configparser import ConfigParser
 from termcolor import colored, cprint
-import os
-import re
 
 #Datetimestamp
 dts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+#parser object for creating the config file
+config = ConfigParser()
+
+#Read in config file entries and create vars
+config.read('APIkey.ini')
+key = config.get('API keys', 'key')
+secret = config.get('API keys', 'secret')
+
 #Bittrex API key object
-my_bittrex = Bittrex('', '')
-# my_bittrex = Bittrex(str(key), str(secret))
-# print(my_bittrex.__dict__)
+# my_bittrex = Bittrex(secret, 'few') <-- for testing invalid API calls
+my_bittrex = Bittrex(secret, key)
 
 #create the command line group
 @click.group()
@@ -59,7 +63,6 @@ def convert(currency, amount):
   # convert to BTC
   conversion_amount = b.convert_to_btc(amount, currency.upper())
   print("[{}]  Converting {} to BTC: {} {} is currently worth {} BTC!".format(str(dts), currency.upper(), "%0.2f" %(amount), currency.upper(), conversion_amount))
-  pass
 #convert command code block END
 
 ###ACCOUNT API CALLS###
@@ -71,7 +74,20 @@ def convert(currency, amount):
 #Used to retrieve the balance from your account for a specific currency.
 def accountbalance(cryptocurrency):
   # print(type(my_bittrex)) <-- for debugging
-  print(tabulate([my_bittrex.get_balance(cryptocurrency)["result"]], headers="keys", tablefmt="grid"))
+  try:
+    t = my_bittrex.get_balance(cryptocurrency)
+    table = tabulate([t['result']], headers="keys", tablefmt="grid")
+    print(table)
+  except TypeError as e:
+    if t['message'] ==  'INVALID_SIGNATURE':
+      print("Invalid Credentials. Check your API keys.")
+    elif t['message'] ==  'INVALID_CURRENCY':
+      print("Invalid Currency specified. Check your symbol.")
+    else:
+      print("Unknown error.")
+  except:
+    print(e)
+
 #accountbalance command code block END
 
 #order command code block START
@@ -97,7 +113,7 @@ def orders(cp):
 @click.option("--c")
 
 def deposits(c):
-  print(tabulate([my_bittrex.get_deposit_history(c)["result"]], headers="keys", tablefmt="grid"))
+  print(tabulate(my_bittrex.get_deposit_history(c)["result"], headers="keys", tablefmt="grid"))
 #deposit history command code block END
 
 #withdrawal history command code block START
