@@ -6,9 +6,7 @@ A python based command line application that allows you to check accounts and ev
 cryptocurrencies via a CLI interface.
 
 ## Set up
-This is still in the inital stages but for now, you have to generate an API key on Bittrexx and
-then insert the two keys in line 20 of the Pytrexx.py file. THis will be stored in a configuration
-file in future builds.
+After you install the script, open the APIkey,ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your accont.
 
 ## Usage
 Usage: pytrexx.py [OPTIONS] COMMAND [ARGS]...
@@ -36,12 +34,21 @@ Options:
 Commands:
 
 accountbalance  Check your Bittrex account balance
+
 buy             Set buy limit order <currency pair>...
+
 cancel          Cancel an existing buy/sell limit order
+
 convert         <currency> type and <amount> to convert.
+
 currencies      List all supported currencies on Bittrex
+
 deposits        Check your Bittrex deposit history
+
 order           Check a Bittrex order
+
 orders          Check your Bittrex order history
+
 sell            Set buy limit order <currency pair>...
+
 withdrawals     Check your Bittrex withdrawal history
