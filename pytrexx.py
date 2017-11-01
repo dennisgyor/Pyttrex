@@ -23,7 +23,7 @@ secret = config.get('API keys', 'secret')
 
 #Bittrex API key object
 # my_bittrex = Bittrex(secret, 'few') <-- for testing invalid API calls
-my_bittrex = Bittrex(secret, key)
+my_bittrex = Bittrex(key, secret)
 
 #create the command line group
 @click.group()
