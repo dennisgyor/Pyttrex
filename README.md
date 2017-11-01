@@ -63,5 +63,8 @@ withdrawals     Check your Bittrex withdrawal history
 
 If you want to check your Bitcoin account balance on Bittrex:
 
-```python
-  python3 pytrexx accountbalance BTC
+    python3 pytrexx.py accountbalance BTC
+
+If you want to get your last two deposits:
+
+    python3 pytrexx.py deposits --n 2

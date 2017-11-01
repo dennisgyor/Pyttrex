@@ -109,11 +109,12 @@ def orders(cp):
 #orderhistory command code block END
 
 #deposit history command code block START
-@cli.command('deposits', help='Check your Bittrex deposit history')
+@cli.command('deposits', help='Check your Bittrex deposit history Options: currency, number of deposits ')
 @click.option("--c")
+@click.option("--n")
 
-def deposits(c):
-  print(tabulate(my_bittrex.get_deposit_history(c)["result"], headers="keys", tablefmt="grid"))
+def deposits(c, n):
+  print(tabulate(my_bittrex.get_deposit_history(c)["result"][:int(n)], headers="keys", tablefmt="grid"))
 #deposit history command code block END
 
 #withdrawal history command code block START
