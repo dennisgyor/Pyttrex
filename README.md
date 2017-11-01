@@ -1,9 +1,15 @@
 # Pytrexx
 Python based command line tool to access the Bittrex cryptocurrency exhange
 
+## Disclaimer:
+IN NO EVENT, UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING, SHALL ANY PERSON BE LIABLE FOR ANY LOSS, EXPENSE OR DAMAGE, OF ANY TYPE OR NATURE ARISING OUT OF THE USE OF, OR INABILITY TO USE THIS SOFTWARE OR PROGRAM, INCLUDING, BUT NOT LIMITED TO, CLAIMS, SUITS OR CAUSES OF ACTION INVOLVING ALLEGED INFRINGEMENT OF COPYRIGHTS, PATENTS, TRADEMARKS, TRADE SECRETS, OR UNFAIR COMPETITION.
+
 ## Overview
 A python based command line application that allows you to check accounts and even buy and sell
 cryptocurrencies via a CLI interface.
+
+## Support
+This has been tested on Python 3 only. I have not tested this on Python 2,x or Windows as of yet.
 
 ## Set up
 After you install the script, open the APIkey.ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your accont.
