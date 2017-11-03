@@ -9,7 +9,7 @@ A python based command line application that allows you to check accounts and ev
 cryptocurrencies via a CLI interface.
 
 ## Support
-This has been tested on Python 3 only. I have not tested this on Python 2,x or Windows as of yet.
+This has been tested on Python 3 only. I have not tested this on Python 2.x or Windows as of yet.
 
 ## Set up
 
@@ -17,7 +17,7 @@ This has been tested on Python 3 only. I have not tested this on Python 2,x or W
 
 2. Install the proper modules in order to run Pytrexx by running the following command:
 
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
 
 3. After you install the modules, open the APIkey.ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your accont.
 
