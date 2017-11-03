@@ -12,7 +12,14 @@ cryptocurrencies via a CLI interface.
 This has been tested on Python 3 only. I have not tested this on Python 2,x or Windows as of yet.
 
 ## Set up
-After you install the script, open the APIkey.ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your accont.
+
+1. Clone the repo onto your system and cd into the Pytrexx directory.
+
+2. Install the proper modules in order to run Pytrexx by running the following command:
+
+    pip install -r requirements.txt
+
+3. After you install the modules, open the APIkey.ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your accont.
 
 ## Usage
 Usage: pytrexx.py [OPTIONS] COMMAND [ARGS]...

@@ -1,0 +1,9 @@
+click==6.7
+colorama==0.3.7
+configparser==3.5.0
+forex-python==0.3.2
+requests==2.18.4
+SecretStorage==2.3.1
+simplejson==3.11.1
+tabulate==0.8.1
+termcolor==1.1.0
