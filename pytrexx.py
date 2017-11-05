@@ -110,7 +110,7 @@ def accountbalance(cryptocurrency):
   # print(type(my_bittrex)) <-- for debugging
   try:
     t = my_bittrex.get_balance(cryptocurrency)
-    table = tabulate([t['result']], headers="keys", tablefmt="grid")
+    table = tabulate([t['result']], headers="keys", tablefmt="grid", floatfmt=".8f")
     print(table)
   except TypeError as e:
     if t['message'] ==  'INVALID_SIGNATURE':
