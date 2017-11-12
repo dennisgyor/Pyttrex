@@ -76,4 +76,4 @@ Get the last two deposits from your account:
 
 Sell 20 Vertcoin at 0.025 BTC
 
-    python3 pytrexx.py sell VTC 20 0.025
+    python3 pytrexx.py sell BTC-VTC 20 0.025
