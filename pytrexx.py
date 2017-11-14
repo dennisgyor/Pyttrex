@@ -169,7 +169,7 @@ def cancel(cp, quantity, rate):
 
 #GET a list of all currencies supported on the Bittrex platform
 def currencies():
-  print(tabulate([my_bittrex.get_currencies()], headers="keys", tablefmt="grid"))
+  print(tabulate(my_bittrex.get_currencies()['result'], headers="keys", tablefmt="grid"))
 #currencies command code block END
 
 if __name__ == '__main__':
