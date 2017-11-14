@@ -1,4 +1,5 @@
 #config file
+APIkey.ini
 config/APIkey.ini.dgtest
 # compiled binaries
 __pycache__
