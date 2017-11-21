@@ -100,6 +100,26 @@ def accountbalances():
     print(e)
 #accountbalances command code block END
 
+#accountbalances command code block START
+@cli.command('accountbalances', help='Get a balance of all of your coins on Bittrex')
+
+#Used to retrieve the balance from your account for all currencies.
+def accountbalances():
+  try:
+    t = my_bittrex.get_balances()
+    table = tabulate(t['result'], headers="keys", tablefmt="grid", floatfmt=".8f")
+    print(table)
+  except TypeError as e:
+    if t['message'] ==  'INVALID_SIGNATURE':
+      print("Invalid Credentials. Check your API keys.")
+    elif t['message'] ==  'INVALID_CURRENCY':
+      print("Invalid Currency specified. Check your symbol.")
+    else:
+      print("Unknown error.")
+  except:
+    print(e)
+#accountbalances command code block END
+
 #accountbalance command code block START
 @cli.command('accountbalance', help='Check your Bittrex account balance for a currency')
 # required
@@ -110,7 +130,7 @@ def accountbalance(cryptocurrency):
   # print(type(my_bittrex)) <-- for debugging
   try:
     t = my_bittrex.get_balance(cryptocurrency)
-    table = tabulate([t['result']], headers="keys", tablefmt="grid")
+    table = tabulate([t['result']], headers="keys", tablefmt="grid", floatfmt=".8f")
     print(table)
   except TypeError as e:
     if t['message'] ==  'INVALID_SIGNATURE':
@@ -161,7 +181,9 @@ def order(id):
 
 def orders(cp):
   # import pdb;pdb.set_trace()
-  print(my_bittrex.get_order_history(cp))
+  t = my_bittrex.get_order_history(cp)
+  table = tabulate(t['result'], headers="keys", tablefmt="grid", floatfmt=".8f")
+  print(table)
 #orderhistory command code block END
 
 #deposit history command code block START
@@ -239,7 +261,7 @@ def cancel(id):
 
 #GET a list of all currencies supported on the Bittrex platform
 def currencies():
-  print(tabulate([my_bittrex.get_currencies()], headers="keys", tablefmt="grid"))
+  print(tabulate(my_bittrex.get_currencies()['result'], headers="keys", tablefmt="grid"))
 #currencies command code block END
 
 if __name__ == '__main__':
