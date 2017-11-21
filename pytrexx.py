@@ -67,6 +67,26 @@ def convert(currency, amount):
 
 ###ACCOUNT API CALLS###
 
+#accountbalances command code block START
+@cli.command('accountbalances', help='Get a balance of all of your coins on Bittrex')
+
+#Used to retrieve the balance from your account for all currencies.
+def accountbalances():
+  try:
+    t = my_bittrex.get_balances()
+    table = tabulate(t['result'], headers="keys", tablefmt="grid", floatfmt=".8f")
+    print(table)
+  except TypeError as e:
+    if t['message'] ==  'INVALID_SIGNATURE':
+      print("Invalid Credentials. Check your API keys.")
+    elif t['message'] ==  'INVALID_CURRENCY':
+      print("Invalid Currency specified. Check your symbol.")
+    else:
+      print("Unknown error.")
+  except:
+    print(e)
+#accountbalances command code block END
+
 #accountbalance command code block START
 @cli.command('accountbalance', help='Check your Bittrex account balance')
 @click.argument('cryptocurrency', nargs=1, type=str)
