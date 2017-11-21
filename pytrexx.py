@@ -125,7 +125,9 @@ def order(id):
 
 def orders(cp):
   # import pdb;pdb.set_trace()
-  print(my_bittrex.get_order_history(cp))
+  t = my_bittrex.get_order_history(cp)
+  table = tabulate(t['result'], headers="keys", tablefmt="grid", floatfmt=".8f")
+  print(table)
 #orderhistory command code block END
 
 #deposit history command code block START
