@@ -1,5 +1,6 @@
 #config file
 config/APIkey.ini.dgtest
+APIkey.ini
 # compiled binaries
 __pycache__
 pytrexx.pyc
