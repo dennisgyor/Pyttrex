@@ -1,3 +1,5 @@
+[logo]: https://github.com/dennisgyor/Pyttrex/blob/master/pyttrex.png
+
 # Pyttrex
 Python based command line tool to access the Bittrex cryptocurrency exhange
 
@@ -7,10 +9,12 @@ IN NO EVENT, UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING, SHALL AN
 ## Overview
 A python based command line application that allows you to check accounts and even buy and sell
 cryptocurrencies via a CLI interface. This is essentially the Bittrexx application available via the command
-line. Almost everything you can do in the Bittrex GUI, you can accomplish via Pyttrex (no 2FA needed). 
+line. Almost everything you can do in the Bittrex GUI, you can accomplish via Pyttrex (no 2FA needed).
 
 ## Support
 This has been tested on Python 3 only. I have not tested this on Python 2.x or Windows as of yet.
+
+In addition, if you want to take a deeper dive into the API calls and the paramaters for the various calls, reference the API documentation [here](https://www.bittrex.com/Home/Api).
 
 ## Set up
 
