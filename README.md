@@ -78,7 +78,12 @@ Sell 20 Vertcoin at 0.025 BTC
 
     python3 pyttrex.py sell BTC-VTC 20 0.025
 
+Check your Bittrex account balance for Bitcoin
+
+    python3 pyttrex.py accountbalance BTC
+
 ## Donations accepted:
 
 ETH: 0xf691104b8d26a7a7e48CbCa41385d41F5DbCD205
+
 BTC: 3J4DCcB8Wf9gLqmZXuNev6pkCqThHtgxzG
