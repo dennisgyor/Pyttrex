@@ -202,7 +202,6 @@ def buy(cp, quantity, rate):
 def sell(cp, quantity, rate):
   if click.confirm("Are you sure you want to make this SELL LIMIT order?", abort=True):
       tx = my_bittrex.sell_limit(cp, quantity, rate)
-      # print(tx['message'])
       if tx['message'] == 'ZERO_OR_NEGATIVE_NOT_ALLOWED':
         cprint("Check your balances. You may have insufficient funds.", 'red')
       elif tx['message'] == 'INVALID_MARKET':
@@ -261,6 +260,24 @@ def ticker(markets):
   print(tabulate([tx["result"]], headers="keys", tablefmt="grid"))
 # public/getticker command code block END
 
+# public/getmarketsummaries command code block START
+@cli.command('summaries', help='Used to get the last 24 hour summary of all active exchanges.')
+
+def summaries():
+  """Used to get the last 24 hour summary of all active exchanges."""
+  tx = my_bittrex.get_market_summaries()
+  print(tabulate(tx["result"], headers="keys", tablefmt="grid"))
+# public/getmarketsummaries command code block END
+
+# public/getmarketsummary command code block START
+@cli.command('summary', help='Used to get the last 24 hour summary of all active exchanges.')
+@click.argument('markets', type=str)
+
+def summary(markets):
+  """Used to get the last 24 hour summary of all active exchanges."""
+  tx = my_bittrex.get_marketsummary(markets)
+  print(tabulate(tx["result"], headers="keys", tablefmt="grid"))
+# public/getmarketsummary command code block END
 
 if __name__ == '__main__':
     cli()

@@ -60,6 +60,8 @@ Commands:
   * order:            Check a Bittrex order by <UUID>
   * orders:           Check your Bittrex order history
   * sell:             Set buy limit order <currency pair>...
+  * summaries:        Used to get the last 24 hour summary of all...
+  * summary:          Used to get the last 24 hour summary of all...
   * ticker:           Used to get the current tick values for a...
   * withdrawals:      Check your Bittrex withdrawal history
 
@@ -85,6 +87,14 @@ Sell 20 Vertcoin at 0.025 BTC:
 Check your Bittrex account balance for Bitcoin:
 
     python3 pyttrex.py accountbalance BTC
+
+To get a list of all currencies supported on the Bittrex platform:
+
+    python3 pyttrex.py currencies
+
+To retrieve the last 24 hours of all active exchanges:
+
+    python3 pyttrex.py summaries
 
 ## Donations accepted:
 
