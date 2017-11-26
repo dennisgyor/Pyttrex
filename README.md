@@ -1,4 +1,4 @@
-# Pytrexx
+# Pyttrex
 Python based command line tool to access the Bittrex cryptocurrency exhange
 
 ## Disclaimer:
@@ -13,18 +13,18 @@ This has been tested on Python 3 only. I have not tested this on Python 2.x or W
 
 ## Set up
 
-1. Clone the repo onto your system and cd into the Pytrexx directory.
+1. Clone the repo onto your system and cd into the pyttrex directory.
 
-2. Install the proper modules in order to run Pytrexx by running the following command:
+2. Install the proper modules in order to run pyttrex by running the following command:
 
     pip3 install -r requirements.txt
 
-3. After you install the modules, open the APIkey.ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your accont.
+3. After you install the modules, open the APIkey.ini and enter your secret and key from your bittrexx API key. This should be all that you need to start making API calls with your account.
 
 ## Usage
-Usage: pytrexx.py [OPTIONS] COMMAND [ARGS]...
+Usage: pyttrex.py [OPTIONS] COMMAND [ARGS]...
 
-  ******************Pytrexx******************
+  ******************pyttrex******************
 
   Bittrex account and trading bot command line utility.
 
@@ -64,16 +64,21 @@ Commands:
 
 Get a balance of all of your coins on the Bittrex exchange:
 
-    python3 pytrexx.py accountbalances
+    python3 pyttrex.py accountbalances
 
 Check your Bitcoin account balance on Bittrex:
 
-    python3 pytrexx.py accountbalance BTC
+    python3 pyttrex.py accountbalance BTC
 
 Get the last two deposits from your account:
 
-    python3 pytrexx.py deposits --n 2
+    python3 pyttrex.py deposits --n 2
 
 Sell 20 Vertcoin at 0.025 BTC
 
-    python3 pytrexx.py sell BTC-VTC 20 0.025
+    python3 pyttrex.py sell BTC-VTC 20 0.025
+
+## Donations accepted:
+
+ETH: 0xf691104b8d26a7a7e48CbCa41385d41F5DbCD205
+BTC: 3J4DCcB8Wf9gLqmZXuNev6pkCqThHtgxzG
