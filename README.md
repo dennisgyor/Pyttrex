@@ -1,4 +1,4 @@
-![logo](https://github.com/dennisgyor/Pyttrex/blob/master/pyttrex.png "Pyttrex logo image")
+![logo](https://github.com/dennisgyor/Pyttrex/blob/master/pyttrex_logo.png "Pyttrex logo image")
 
 # Pyttrex
 Python based command line tool to access the Bittrex cryptocurrency exhange
@@ -103,7 +103,7 @@ To retrieve the last 24 hours of all active exchanges:
 
     python3 pyttrex.py summaries
 
-Retrieving the order book for BTC-LTC gor all buys:
+Retrieving the order book for BTC-LTC for all buys:
 
     python3 pyttrex.py order_book BTC-LTC buy
 
