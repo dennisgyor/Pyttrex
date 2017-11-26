@@ -47,18 +47,35 @@ Options:
 ## Available Commands:
 
 Commands:
-  accountbalance   Check your Bittrex account balance for a...
-  accountbalances  Check your Bittrex total account balance
-  address          Retrieve your currency wallet address
-  buy              Set buy limit order <currency pair>...
-  cancel           Cancel an existing buy/sell order
-  convert          <currency> type and <amount> to convert.
-  currencies       List all supported currencies on Bittrex
-  deposits         Check your Bittrex deposit history Options:...
-  order            Check a Bittrex order by <UUID>
-  orders           Check your Bittrex order history
-  sell             Set buy limit order <currency pair>...
-  withdrawals      Check your Bittrex withdrawal history
+
+accountbalance   Check your Bittrex account balance for a...
+
+accountbalances  Check your Bittrex total account balance
+
+address          Retrieve your currency wallet address
+
+buy              Set buy limit order <currency pair>...
+
+cancel           Cancel an existing buy/sell order
+
+convert          <currency> type and <amount> to convert.
+
+currencies       List all supported currencies on Bittrex
+
+deposits         Check your Bittrex deposit history by...
+
+open_orders      Get all open orders or by market
+
+order            Check a Bittrex order by <UUID>
+
+orders           Check your Bittrex order history
+
+sell             Set buy limit order <currency pair>...
+
+ticker           Used to get the current tick values for a...
+
+withdrawals      Check your Bittrex withdrawal history
+
 
 ## Examples:
 
@@ -74,11 +91,11 @@ Get the last two deposits from your account:
 
     python3 pyttrex.py deposits --n 2
 
-Sell 20 Vertcoin at 0.025 BTC
+Sell 20 Vertcoin at 0.025 BTC:
 
     python3 pyttrex.py sell BTC-VTC 20 0.025
 
-Check your Bittrex account balance for Bitcoin
+Check your Bittrex account balance for Bitcoin:
 
     python3 pyttrex.py accountbalance BTC
 
