@@ -1,4 +1,4 @@
-![logo](https://github.com/dennisgyor/Pyttrex/blob/master/pyttrex_logo.png "Pyttrex logo image")
+![logo](https://github.com/dennisgyor/Pyttrex/blob/master/pyttrex_logo.jpg "Pyttrex logo image")
 
 # Pyttrex
 Python based command line tool to access the Bittrex cryptocurrency exhange
