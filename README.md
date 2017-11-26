@@ -6,7 +6,8 @@ IN NO EVENT, UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING, SHALL AN
 
 ## Overview
 A python based command line application that allows you to check accounts and even buy and sell
-cryptocurrencies via a CLI interface.
+cryptocurrencies via a CLI interface. This is essentially the Bittrexx application available via the command
+line. Almost everything you can do in the Bittrex GUI, you can accomplish via Pyttrex (no 2FA needed). 
 
 ## Support
 This has been tested on Python 3 only. I have not tested this on Python 2.x or Windows as of yet.
@@ -56,8 +57,10 @@ Commands:
   * convert:          <currency> type and <amount> to convert.
   * currencies:       List all supported currencies on Bittrex
   * deposits:         Check your Bittrex deposit history by...
+  * history:          Used to retrieve the latest trades that have...
   * open_orders:      Get all open orders or by market
   * order:            Check a Bittrex order by <UUID>
+  * order_book:       Used to get retrieve the orderbook for a...
   * orders:           Check your Bittrex order history
   * sell:             Set buy limit order <currency pair>...
   * summaries:        Used to get the last 24 hour summary of all...
@@ -95,6 +98,14 @@ To get a list of all currencies supported on the Bittrex platform:
 To retrieve the last 24 hours of all active exchanges:
 
     python3 pyttrex.py summaries
+
+Retrieving the order book for BTC-LTC gor all buys:
+
+    python3 pyttrex.py order_book BTC-LTC buy
+
+Check the last three exchange transactions for DOGE coin:
+
+    pyttrex.py history BTC-DOGE --n 3
 
 ## Donations accepted:
 

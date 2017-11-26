@@ -279,5 +279,31 @@ def summary(markets):
   print(tabulate(tx["result"], headers="keys", tablefmt="grid"))
 # public/getmarketsummary command code block END
 
+# public/getorderbook command code block START
+@cli.command('order_book', help='Used to get retrieve the orderbook for a given market.')
+@click.argument('markets', type=str)
+@click.argument('order_type', type=str)    # buy, sell or both are the 3 valid entries
+
+def order_book(markets, order_type):
+  """Used to get retrieve the orderbook for a given market."""
+  tx = my_bittrex.get_orderbook(markets, order_type)
+  print(tabulate(tx["result"], headers="keys", tablefmt="grid"))
+# public/getorderbook command code block END
+
+# public/getmarkethistory command code block START
+@cli.command('history', help='Used to retrieve the latest trades that have occured for a specific market.')
+@click.argument('markets', type=str)
+@click.option("--n", type=int)
+
+def history(markets, n):
+  """Used to retrieve the latest trades that have occured for a specific market."""
+  tx = my_bittrex.get_market_history(markets, n)
+  if tx['message'] == 'INVALID_MARKET':
+    cprint("Invalid currency specified. Check your currency pair.", 'red')
+  else:
+    print(tabulate(tx["result"][:n], headers="keys", tablefmt="grid"))
+
+# public/getmarkethistory command code block END
+
 if __name__ == '__main__':
     cli()
