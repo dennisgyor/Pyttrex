@@ -23,7 +23,6 @@ secret = config.get('API keys', 'secret')
 
 # Bittrex API key object
 # my_bittrex = Bittrex(secret, 'few') <-- for testing invalid API calls
-# import pdb;pdb.set_trace()
 my_bittrex = Bittrex(key, secret)
 
 # create the command line group for the click framework
@@ -58,33 +57,23 @@ def convert(currency, amount):
     x = b.get_latest_price(currency)
 
     cprint('Powered by Coindesk | https://www.coindesk.com/price/', 'green')
-    print("[" + str(dts) + "]" + "  " + currency.upper() + " for 1.0 Bitcoin (BTC) is " + str(x))
+    cprint("[" + str(dts) + "]" + "  " + currency.upper() + " for 1.0 Bitcoin (BTC) is " + str(x), "green")
 
     # convert to BTC
     conversion_amount = b.convert_to_btc(amount, currency.upper())
-    print("[{}]  Converting {} to BTC: {} {} is currently worth {} BTC!".format(str(dts), currency.upper(), "%0.2f" %(amount), currency.upper(), conversion_amount))
-#convert command code block END
+    cprint("[{}]  Converting {} to BTC: {} {} is currently worth {} BTC!".format(str(dts), currency.upper(), "%0.2f" %(amount), currency.upper(), conversion_amount), "green")
+# Convert command code block END
 
 ### ACCOUNT API CALLS ###
+
 # accountbalances command code block START
 @cli.command('accountbalances', help='Check your Bittrex total account balance')
 
 def accountbalances():
   """Used to retrieve the balance from your account for a specific currency."""
   # print(type(my_bittrex)) <-- for debugging
-  try:
-    tx = my_bittrex.get_balances()
-    table = tabulate(tx['result'], headers="keys", tablefmt="grid")
-    print(table)
-  except TypeError as e:
-    if t['message'] == 'INVALID_SIGNATURE':
-      print("Invalid Credentials. Check your API keys.")
-    elif t['message'] == 'INVALID_CURRENCY':
-      print("Invalid Currency specified. Check your symbol.")
-    else:
-      print("Unknown error.")
-  except:
-    print(e)
+  tx = my_bittrex.get_balances()
+  print(tabulate(tx['result'], headers="keys", tablefmt="grid"))
 # accountbalances command code block END
 
 # accountbalance command code block START
@@ -149,8 +138,7 @@ def order(id):
 
 # orderhistory command code block START
 @cli.command('orders', help='Check your Bittrex order history')
-# cryptocurrency pair option (i.e. BTC-ETH)
-@click.option('--cp')
+@click.option('--cp')    # cryptocurrency pair option (i.e. BTC-ETH)
 
 def orders(cp):
   tx = my_bittrex.get_order_history(cp)
@@ -160,10 +148,8 @@ def orders(cp):
 
 # deposit history command code block START
 @cli.command('deposits', help='Check your Bittrex deposit history by currency or number of deposits ')
-# specify cryptocurrency option
-@click.option("--c")
-# number of deposits option
-@click.option("--n", type=int)
+@click.option("--c")              # specify cryptocurrency option
+@click.option("--n", type=int)    # number of deposits option
 
 def deposits(c, n):
   tx = my_bittrex.get_deposit_history(c)
@@ -270,6 +256,7 @@ def currencies():
 @click.argument('markets', type=str)
 
 def ticker(markets):
+  """Used to get the current tick values for a market."""
   tx = my_bittrex.get_ticker(markets)
   print(tabulate([tx["result"]], headers="keys", tablefmt="grid"))
 # public/getticker command code block END
