@@ -4,6 +4,7 @@ config/APIkey.ini.dgtest
 __pycache__
 pytrexx.pyc
 bitrexx.pyc
+pytrexx.py
 # not a pip yet
 test.py
 setup.py
