@@ -175,7 +175,7 @@ def withdrawals(c, n):
 ### MARKET API CALLS ###
 
 # market/buylimit command code block START
-@cli.command('buy', help='Set buy limit order <currency pair> <quantity> <rate> in BTC')
+@cli.command('buy', help='Set SELL LIMIT order <currency pair> <quantity> <rate> in BTC')
 @click.argument('cp', type=str)
 @click.argument('quantity', type=float)
 @click.argument('rate', type=float)
@@ -188,12 +188,17 @@ def buy(cp, quantity, rate):
         cprint("Check your balances. You may have insufficient funds.", 'red')
       elif tx['message'] == 'INVALID_MARKET':
         cprint("Invalid Currency pair specified. Check your currency pairs.", 'red')
+      elif tx['message'] == 'DUST_TRADE_DISALLOWED_MIN_VALUE_50K_SAT':
+        cprint("Unable to trade dust. Minimum 50k Satoshis.", 'red')
+      elif tx['message'] == 'APIKEY_INVALID':
+        cprint("API Key is invalid. Check APIkey.ini and verify your API key is valid.", 'red')
       else:
+        cprint("BUY-LIMIT order of {} {} at {} BTC was successful! ".format(quantity, cp, rate), "green")
         cprint(tabulate([tx["result"]], headers="keys", tablefmt="grid"), "green")
 # market/buylimit command code block END
 
 # market/selllimit command code block START
-@cli.command('sell', help='Set buy limit order <currency pair> <quantity> <rate> in BTC')
+@cli.command('sell', help='Set SELL LIMIT order <currency pair> <quantity> <rate> in BTC')
 @click.argument('cp', type=str)
 @click.argument('quantity', type=float)
 @click.argument('rate', type=float)
@@ -208,9 +213,12 @@ def sell(cp, quantity, rate):
         cprint("Invalid Currency pair specified. Check your currency pairs.", 'red')
       elif tx['message'] == 'DUST_TRADE_DISALLOWED_MIN_VALUE_50K_SAT':
         cprint("Unable to trade dust. Minimum 50k Satoshis.", 'red')
+      elif tx['message'] == 'APIKEY_INVALID':
+        cprint("API Key is invalid. Check APIkey.ini and verify your API key is valid.", 'red')
       else:
         cprint("SELL-LIMIT order of {} {} at {} BTC was successful! ".format(quantity, cp, rate), "green")
         cprint(tabulate([tx["result"]], headers="keys", tablefmt="grid"), "green")
+
 # market/selllimit command code block END
 
 # market/cancel command code block START
