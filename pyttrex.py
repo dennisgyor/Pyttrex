@@ -25,6 +25,9 @@ secret = config.get('API keys', 'secret')
 # my_bittrex = Bittrex(secret, 'few') <-- for testing invalid API calls
 my_bittrex = Bittrex(key, secret)
 
+# set array got tabulate formats
+tabfmt = ("plain", "simple", "grid", "fancy_grid", "pipe", "orgtbl", "jira", "presto", "psql", "rst", "mediawiki", "moinmoin", "youtrack", "html", "latex", "latex_raw", "latex_booktabs", "textile")
+
 # create the command line group for the click framework
 @click.group()
 @click.version_option('1.0.0')
@@ -51,7 +54,7 @@ def cli(self):
 @click.argument('amount', nargs=1, type=float)
 
 def convert(currency, amount):
-    """Converter method."""
+    """Converter method to convert fiat to BTC."""
 # Create a new converter object with standardized date
     b = BtcConverter()
     x = b.get_latest_price(currency)
@@ -68,12 +71,19 @@ def convert(currency, amount):
 
 # accountbalances command code block START
 @cli.command('accountbalances', help='Check your Bittrex total account balance')
+@click.option('-f')    # set output based on tabulate supported formats
 
-def accountbalances():
+def accountbalances(f):
   """Used to retrieve the balance from your account for a specific currency."""
   # print(type(my_bittrex)) <-- for debugging
-  tx = my_bittrex.get_balances()
-  print(tabulate(tx['result'], headers="keys", tablefmt="grid"))
+  # sets format or default to grid style
+  fmt = f or "grid"
+  # checks to see if the option equals contents in the tabfmt list
+  if fmt in tabfmt:
+    tx = my_bittrex.get_balances()
+    print(tabulate(tx['result'], headers="keys", tablefmt=fmt))
+  else:
+    print("ERROR: Invalid format. Refer to valid tabulate formats here: https://pypi.python.org/pypi/tabulate.")
 # accountbalances command code block END
 
 # accountbalance command code block START
@@ -142,14 +152,14 @@ def order(id):
 
 def orders(cp):
   tx = my_bittrex.get_order_history(cp)
-  print(tabulate([tx["result"]], headers="keys", tablefmt="grid"))
+  print(tabulate(tx["result"], headers="keys", tablefmt="grid"))
   print(tx['message'])
 # orderhistory command code block END
 
 # deposit history command code block START
 @cli.command('deposits', help='Check your Bittrex deposit history by currency or number of deposits ')
-@click.option("--c")              # specify cryptocurrency option
-@click.option("--n", type=int)    # number of deposits option
+@click.option("-c")              # specify cryptocurrency option
+@click.option("-n", type=int)    # number of deposits option
 
 def deposits(c, n):
   tx = my_bittrex.get_deposit_history(c)
